@@ -1,5 +1,5 @@
-import { csv, scaleLinear, scaleTime, extent, timeFormat } from 'd3'
-import { useEffect, useState } from 'react'
+import { scaleLinear, scaleTime, extent, timeFormat } from 'd3'
+import { useData } from './useData'
 
 const height = 500
 const width = 960
@@ -11,19 +11,9 @@ const margin = {
   left: 90
 }
 
-const csvUrl = 'https://gist.githubusercontent.com/Shanmukh459/27f13633f752d5aee204e30f2cfa7ffd/raw/528fb9593330b7f7ff9bca16a1ac273bfb01191e/week_temperature_sf.csv'
 
 function App() {
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    const row = (d) => {
-      d.timestamp = new Date(d.timestamp)
-      d.temperature = +d.temperature
-      return d
-    }
-    csv(csvUrl, row).then(setData)
-  }, [])
+  const data = useData()
 
   if(!data) {
     return <h1>Loading...</h1>
