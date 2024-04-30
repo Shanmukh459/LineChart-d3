@@ -1,6 +1,6 @@
 export const AxisBottom = ({ xScale, innerHeight, xAxisTickFormat}) => 
 xScale.ticks().map((tickValue) => (
-  <g key={tickValue} transform={`translate(${xScale(tickValue)},0)`}>
+  <g key={tickValue} className="tick" transform={`translate(${xScale(tickValue)},0)`}>
     <line y2={innerHeight} stroke="black" />
     <text
       style={{ textAnchor: 'middle' }}

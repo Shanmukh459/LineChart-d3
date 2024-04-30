@@ -14,6 +14,9 @@ const margin = {
   left: 90
 }
 
+const xAxisLabelOffset = 55
+const yAxisLabelOffset = 40
+
 function App() {
   const data = useData()
 
@@ -47,16 +50,16 @@ function App() {
         <text
           className='axis-label'
           x={innerWidth/2}
-          y={innerHeight+40}
+          y={innerHeight+xAxisLabelOffset}
           textAnchor='middle'
         >Time</text>
         <AxisLeft innerWidth={innerWidth} yScale={yScale} />
         <text
           className='axis-label'
           textAnchor='middle'
-          transform={`translate(-40, ${innerHeight/2}) rotate(-90)`}
+          transform={`translate(${-yAxisLabelOffset}, ${innerHeight/2}) rotate(-90)`}
         >Temperature</text>
-        <Marks xScale={xScale} yScale={yScale} xValue={xValue} yValue={yValue} data={data} />
+        <Marks xScale={xScale} yScale={yScale} xValue={xValue} yValue={yValue} data={data} tooltipFormat={xAxisTickFormat}/>
       </g>
 
     </svg>
