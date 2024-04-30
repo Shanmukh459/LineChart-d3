@@ -2,6 +2,7 @@ import { scaleLinear, scaleTime, extent, timeFormat } from 'd3'
 import { useData } from './useData'
 import { AxisBottom } from './AxisBottom'
 import { AxisLeft } from './AxisLeft'
+import { Marks } from './Marks'
 
 const height = 500
 const width = 960
@@ -55,15 +56,7 @@ function App() {
           textAnchor='middle'
           transform={`translate(-40, ${innerHeight/2}) rotate(-90)`}
         >Temperature</text>
-        {data.map((d) => (
-          <circle 
-            cx={xScale(xValue(d))}
-            cy={yScale(yValue(d))}
-            r={5}
-            fill='#137b80'
-          >
-          </circle>
-        ))}
+        <Marks xScale={xScale} yScale={yScale} xValue={xValue} yValue={yValue} data={data} />
       </g>
 
     </svg>
