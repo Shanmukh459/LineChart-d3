@@ -1,6 +1,7 @@
 import { scaleLinear, scaleTime, extent, timeFormat } from 'd3'
 import { useData } from './useData'
 import { AxisBottom } from './AxisBottom'
+import { AxisLeft } from './AxisLeft'
 
 const height = 500
 const width = 960
@@ -48,16 +49,7 @@ function App() {
           y={innerHeight+40}
           textAnchor='middle'
         >Time</text>
-        {yScale.ticks().map(tickValue => (
-          <g transform={`translate(0, ${yScale(tickValue)})`}>
-            <line x2={innerWidth} stroke="black" />
-            <text
-              style={{ textAnchor: 'end' }}
-              x={-5}
-              dy="0.32em"
-            >{tickValue}</text>
-          </g>
-        ))}
+        <AxisLeft innerWidth={innerWidth} yScale={yScale} />
         <text
           className='axis-label'
           textAnchor='middle'
